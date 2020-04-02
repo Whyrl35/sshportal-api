@@ -53,6 +53,31 @@ class AclsModel(db.Model):
         db.session.add(self)
         db.session.commit()
 
+    @staticmethod
+    def to_json(acl):
+        return {
+            'id': acl.id,
+            'created_at': acl.created_at.isoformat() if acl.created_at else None,
+            'updated_at': acl.updated_at.isoformat() if acl.updated_at else None,
+            'deleted_at': acl.deleted_at.isoformat() if acl.deleted_at else None,
+            'host_pattern': acl.host_pattern,
+            'action': acl.action,
+            'weight': acl.weight,
+            'comment': acl.comment,
+        }
+
+    @classmethod
+    def by_id(cls, acl_id):
+        return cls.query.filter_by(id=acl_id).one()
+
+    @classmethod
+    def by_ids(cls, acl_ids):
+        return cls.query.filter(cls.id.in_(acl_ids))
+
+    @classmethod
+    def return_all(cls):
+        return cls.query.all()
+
 
 class HostGroupsModel(db.Model):
     __tablename__ = 'host_groups'
@@ -67,6 +92,33 @@ class HostGroupsModel(db.Model):
     def save_to_db(self):
         db.session.add(self)
         db.session.commit()
+
+    @staticmethod
+    def to_json(host_group):
+        return {
+            'id': host_group.id,
+            'created_at': host_group.created_at.isoformat() if host_group.created_at else None,
+            'updated_at': host_group.updated_at.isoformat() if host_group.updated_at else None,
+            'deleted_at': host_group.deleted_at.isoformat() if host_group.deleted_at else None,
+            'name': host_group.name,
+            'comment': host_group.comment,
+        }
+
+    @classmethod
+    def by_name(cls, host_group_name):
+        return cls.query.filter_by(name=host_group_name).one()
+
+    @classmethod
+    def by_id(cls, host_group_id):
+        return cls.query.filter_by(id=host_group_id).one()
+
+    @classmethod
+    def by_ids(cls, host_group_ids):
+        return cls.query.filter(cls.id.in_(host_group_ids))
+
+    @classmethod
+    def return_all(cls):
+        return cls.query.all()
 
 
 class HostsModel(db.Model):
@@ -92,7 +144,7 @@ class HostsModel(db.Model):
         db.session.commit()
 
 
-class HostHostGroups(db.Model):
+class HostHostGroupsModel(db.Model):
     __tablename__ = 'host_host_groups'
 
     host_id = db.Column(db.Integer)
@@ -107,7 +159,7 @@ class HostHostGroups(db.Model):
         db.session.commit()
 
 
-class HostGroupAcls(db.Model):
+class HostGroupAclsModel(db.Model):
     __tablename__ = 'host_group_acls'
 
     host_group_id = db.Column(db.Integer)
@@ -120,6 +172,14 @@ class HostGroupAcls(db.Model):
     def save_to_db(self):
         db.session.add(self)
         db.session.commit()
+
+    @classmethod
+    def by_acl_id(cls, acl_id):
+        return cls.query.filter_by(acl_id=acl_id).first()
+
+    @classmethod
+    def by_host_group_id(cls, host_group_id):
+        return cls.query.filter_by(host_group_id=host_group_id)
 
 
 class EventsModel(db.Model):
@@ -194,7 +254,7 @@ class SshKeysModel(db.Model):
         db.session.commit()
 
 
-class UserGroupAcl(db.Model):
+class UserGroupAclModel(db.Model):
     __tablename__ = 'user_group_acls'
 
     user_group_id = db.Column(db.Integer)
@@ -207,6 +267,14 @@ class UserGroupAcl(db.Model):
     def save_to_db(self):
         db.session.add(self)
         db.session.commit()
+
+    @classmethod
+    def by_acl_id(cls, acl_id):
+        return cls.query.filter_by(acl_id=acl_id).first()
+
+    @classmethod
+    def by_user_group_id(cls, user_group_id):
+        return cls.query.filter_by(user_group_id=user_group_id)
 
 
 class UserGroupsModel(db.Model):
@@ -222,6 +290,33 @@ class UserGroupsModel(db.Model):
     def save_to_db(self):
         db.session.add(self)
         db.session.commit()
+
+    @staticmethod
+    def to_json(user_group):
+        return {
+            'id': user_group.id,
+            'created_at': user_group.created_at.isoformat() if user_group.created_at else None,
+            'updated_at': user_group.updated_at.isoformat() if user_group.updated_at else None,
+            'deleted_at': user_group.deleted_at.isoformat() if user_group.deleted_at else None,
+            'name': user_group.name,
+            'comment': user_group.comment,
+        }
+
+    @classmethod
+    def by_name(cls, user_group_name):
+        return cls.query.filter_by(name=user_group_name).first()
+
+    @classmethod
+    def by_id(cls, user_group_id):
+        return cls.query.filter_by(id=user_group_id).first()
+
+    @classmethod
+    def by_ids(cls, user_group_ids):
+        return cls.query.filter(cls.id.in_(user_group_ids))
+
+    @classmethod
+    def return_all(cls):
+        return cls.query.all()
 
 
 class UserKeysModel(db.Model):
@@ -255,7 +350,7 @@ class UserRolesModel(db.Model):
         db.session.commit()
 
 
-class UserUserGroups(db.Model):
+class UserUserGroupsModel(db.Model):
     __tablename__ = 'user_user_groups'
 
     user_id = db.Column(db.Integer)
@@ -270,7 +365,7 @@ class UserUserGroups(db.Model):
         db.session.commit()
 
 
-class UserUserRoles(db.Model):
+class UserUserRolesModel(db.Model):
     __tablename__ = 'user_user_roles'
 
     user_role_id = db.Column(db.Integer)
@@ -306,6 +401,7 @@ class UserModel(db.Model):
     @staticmethod
     def to_json(user):
         return {
+            'id': user.id,
             'name': user.name,
             'password': user.password,
             'created_at': user.created_at.isoformat() if user.created_at else None,
@@ -323,7 +419,7 @@ class UserModel(db.Model):
 
     @classmethod
     def return_all(cls):
-        return {'users': list(map(lambda x: UserModel.to_json(x), UserModel.query.all()))}
+        return {'users': list(map(lambda x: User.to_json(x), User.query.all()))}
 
     @classmethod
     def delete_all(cls):
