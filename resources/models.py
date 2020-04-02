@@ -3,6 +3,8 @@ from sqlalchemy import exc, PrimaryKeyConstraint, MetaData
 from run import app
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
+import json
+import paramiko
 
 # FIXME: https://github.com/blakev/Flask-WhooshAlchemy3
 # need to index movie on title, seen, is_series
@@ -143,6 +145,40 @@ class HostsModel(db.Model):
         db.session.add(self)
         db.session.commit()
 
+    @staticmethod
+    def to_json(host):
+        key = paramiko.RSAKey(data=host.host_key) if host.host_key else None
+        base64_key = key.get_base64() if key else None
+        return {
+            'id': host.id,
+            'created_at': host.created_at.isoformat() if host.created_at else None,
+            'updated_at': host.updated_at.isoformat() if host.updated_at else None,
+            'deleted_at': host.deleted_at.isoformat() if host.deleted_at else None,
+            'name': host.name,
+            'addr': host.addr,
+            'user': host.user,
+            'password': host.password,
+            'ssh_key_id': host.ssh_key_id,
+            'fingerprint': host.fingerprint,
+            'comment': host.comment,
+            'host_key': base64_key,
+            'url': host.url,
+            'hop_ip': host.hop_id,
+        }
+
+    @classmethod
+    def by_id(cls, host_id):
+        result = cls.query.filter_by(id=host_id)
+        return result.first()
+
+    @classmethod
+    def by_ids(cls, host_ids):
+        return cls.query.filter(cls.id.in_(host_ids))
+
+    @classmethod
+    def return_all(cls):
+        return cls.query.all()
+
 
 class HostHostGroupsModel(db.Model):
     __tablename__ = 'host_host_groups'
@@ -157,6 +193,14 @@ class HostHostGroupsModel(db.Model):
     def save_to_db(self):
         db.session.add(self)
         db.session.commit()
+
+    @classmethod
+    def by_host_id(cls, host_id):
+        return cls.query.filter_by(host_id=host_id).first()
+
+    @classmethod
+    def by_host_group_id(cls, host_group_id):
+        return cls.query.filter_by(host_group_id=host_group_id)
 
 
 class HostGroupAclsModel(db.Model):
@@ -198,6 +242,24 @@ class EventsModel(db.Model):
     def save_to_db(self):
         db.session.add(self)
         db.session.commit()
+
+    @staticmethod
+    def to_json(event):
+        return {
+            'id': event.id,
+            'created_at': event.created_at.isoformat() if event.created_at else None,
+            'updated_at': event.updated_at.isoformat() if event.updated_at else None,
+            'deleted_at': event.deleted_at.isoformat() if event.deleted_at else None,
+            'author_id': event.author_id,
+            'domain': event.domain,
+            'action': event.action,
+            'entity': event.entity,
+            'args': json.loads(event.args.decode('UTF-8')) if event.args else None,
+        }
+
+    @classmethod
+    def return_all(cls):
+        return cls.query.all()
 
 
 class SessionsModel(db.Model):
@@ -419,7 +481,7 @@ class UserModel(db.Model):
 
     @classmethod
     def return_all(cls):
-        return {'users': list(map(lambda x: User.to_json(x), User.query.all()))}
+        return {'users': list(map(lambda x: cls.to_json(x), cls.query.all()))}
 
     @classmethod
     def delete_all(cls):
