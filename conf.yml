@@ -1,8 +1,0 @@
-## Secret key that is used to encode all token
-jwt_secret_key: '6FPsjvj6PCiWTLJD5nppE2YJLEEgPh3wyv3zZDBCc9SxW7iiHuMEcUmHf9jNFiYMo'
-
-## Database type and access
-database:
-  type: sqlite
-  sqlite:
-    uri: sqlite:///sshportal.db

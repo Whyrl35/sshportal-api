@@ -1,0 +1,8 @@
+## Secret key that is used to encode all token
+jwt_secret_key: '__my__super__long__jwt__secret__to__be__replaced__'
+
+## Database type and access
+database:
+  type: sqlite
+  sqlite:
+    uri: sqlite:///sshportal.db
