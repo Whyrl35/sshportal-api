@@ -15,6 +15,20 @@ class UserRolesModel(db.Model):
         db.session.add(self)
         db.session.commit()
 
+    @staticmethod
+    def to_json(user_role):
+        return {
+            'id': user_role.id,
+            'created_at': user_role.created_at.isoformat() if user_role.created_at else None,
+            'updated_at': user_role.updated_at.isoformat() if user_role.updated_at else None,
+            'deleted_at': user_role.deleted_at.isoformat() if user_role.deleted_at else None,
+            'name': user_role.name,
+        }
+
+    @classmethod
+    def return_all(cls):
+        return cls.query.all()
+
 
 class UserUserRolesModel(db.Model):
     __tablename__ = 'user_user_roles'
@@ -29,3 +43,11 @@ class UserUserRolesModel(db.Model):
     def save_to_db(self):
         db.session.add(self)
         db.session.commit()
+
+    @classmethod
+    def by_user_role_id(cls, user_role_id):
+        return cls.query.filter_by(user_role_id=user_role_id)
+
+    @classmethod
+    def by_user_id(cls, user_id):
+        return cls.query.filter_by(user_id=user_id).first()

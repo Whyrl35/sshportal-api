@@ -57,3 +57,11 @@ class UserUserGroupsModel(db.Model):
     def save_to_db(self):
         db.session.add(self)
         db.session.commit()
+
+    @classmethod
+    def by_user_group_id(cls, user_group_id):
+        return cls.query.filter_by(user_group_id=user_group_id)
+
+    @classmethod
+    def by_user_id(cls, user_id):
+        return cls.query.filter_by(user_id=user_id)
