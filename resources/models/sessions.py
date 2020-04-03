@@ -21,6 +21,8 @@ class SessionsModel(db.Model):
 
     @staticmethod
     def to_json(session):
+        if session is None:
+            return {}
         return {
             'id': session.id,
             'created_at': session.created_at.isoformat() if session.created_at else None,
@@ -33,6 +35,10 @@ class SessionsModel(db.Model):
             'err_msg': session.err_msg,
             'comment': session.comment,
         }
+
+    @classmethod
+    def by_id(cls, host_group_id):
+        return cls.query.filter_by(id=host_group_id).first()
 
     @classmethod
     def return_all(cls):

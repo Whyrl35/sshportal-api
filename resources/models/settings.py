@@ -17,6 +17,8 @@ class SettingsModel(db.Model):
 
     @staticmethod
     def to_json(item):
+        if item is None:
+            return {}
         return {
             'id': item.id,
             'created_at': item.created_at.isoformat() if item.created_at else None,
@@ -25,6 +27,10 @@ class SettingsModel(db.Model):
             'name': item.name,
             'value': item.value,
         }
+
+    @classmethod
+    def by_id(cls, host_group_id):
+        return cls.query.filter_by(id=host_group_id).first()
 
     @classmethod
     def return_all(cls):

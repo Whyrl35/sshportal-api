@@ -23,6 +23,8 @@ class UserModel(db.Model):
 
     @staticmethod
     def to_json(user):
+        if user is None:
+            return {}
         return {
             'id': user.id,
             'name': user.name,

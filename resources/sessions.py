@@ -24,4 +24,21 @@ class Sessions(Resource):
         return sessions_json
 
 
+class Session(Resource):
+    @jwt_required
+    def get(self, id):
+        session = SessionsModel.by_id(id)
+
+        sessions_part = SessionsModel.to_json(session)
+
+        host = HostsModel.by_id(session.host_id)
+        sessions_part['host'] = HostsModel.to_json(host) if host else None
+
+        user = UserModel.by_id(session.user_id)
+        sessions_part['user'] = UserModel.to_json(user) if user else None
+
+        return sessions_part
+
+
 api.add_resource(Sessions, '/v1/sessions')
+api.add_resource(Session, '/v1/session/<int:id>')

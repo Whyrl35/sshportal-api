@@ -18,6 +18,8 @@ class HostGroupsModel(db.Model):
 
     @staticmethod
     def to_json(host_group):
+        if host_group is None:
+            return {}
         return {
             'id': host_group.id,
             'created_at': host_group.created_at.isoformat() if host_group.created_at else None,

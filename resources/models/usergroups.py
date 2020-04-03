@@ -18,6 +18,8 @@ class UserGroupsModel(db.Model):
 
     @staticmethod
     def to_json(user_group):
+        if user_group is None:
+            return {}
         return {
             'id': user_group.id,
             'created_at': user_group.created_at.isoformat() if user_group.created_at else None,

@@ -20,6 +20,8 @@ class AclsModel(db.Model):
 
     @staticmethod
     def to_json(acl):
+        if acl is None:
+            return {}
         return {
             'id': acl.id,
             'created_at': acl.created_at.isoformat() if acl.created_at else None,

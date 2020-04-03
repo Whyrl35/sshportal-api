@@ -10,4 +10,11 @@ class Events(Resource):
         return [EventsModel.to_json(x) for x in EventsModel.return_all()]
 
 
+class Event(Resource):
+    @jwt_required
+    def get(self, id):
+        return EventsModel.to_json(EventsModel.by_id(id))
+
+
 api.add_resource(Events, '/v1/events')
+api.add_resource(Event, '/v1/event/<int:id>')

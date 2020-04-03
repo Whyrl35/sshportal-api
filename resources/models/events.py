@@ -21,6 +21,8 @@ class EventsModel(db.Model):
 
     @staticmethod
     def to_json(event):
+        if event is None:
+            return {}
         return {
             'id': event.id,
             'created_at': event.created_at.isoformat() if event.created_at else None,
@@ -32,6 +34,10 @@ class EventsModel(db.Model):
             'entity': event.entity,
             'args': json.loads(event.args.decode('UTF-8')) if event.args else None,
         }
+
+    @classmethod
+    def by_id(cls, host_group_id):
+        return cls.query.filter_by(id=host_group_id).one()
 
     @classmethod
     def return_all(cls):

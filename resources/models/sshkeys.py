@@ -22,6 +22,8 @@ class SshKeysModel(db.Model):
 
     @staticmethod
     def to_json(key):
+        if key is None:
+            return {}
         return {
             'id': key.id,
             'created_at': key.created_at.isoformat() if key.created_at else None,
@@ -37,13 +39,18 @@ class SshKeysModel(db.Model):
         }
 
     @classmethod
-    def by_id(cls, host_id):
-        result = cls.query.filter_by(id=host_id)
+    def by_id(cls, id):
+        result = cls.query.filter_by(id=id)
         return result.first()
 
     @classmethod
-    def by_ids(cls, host_ids):
-        return cls.query.filter(cls.id.in_(host_ids))
+    def by_ids(cls, ids):
+        return cls.query.filter(cls.id.in_(ids))
+
+    @classmethod
+    def by_name(cls, name):
+        result = cls.query.filter_by(name=name)
+        return result.first()
 
     @classmethod
     def return_all(cls):

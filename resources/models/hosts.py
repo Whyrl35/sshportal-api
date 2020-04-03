@@ -26,6 +26,9 @@ class HostsModel(db.Model):
 
     @staticmethod
     def to_json(host):
+        if host is None:
+            return {}
+
         key = paramiko.RSAKey(data=host.host_key) if host.host_key else None
         base64_key = key.get_base64() if key else None
         return {
@@ -46,13 +49,18 @@ class HostsModel(db.Model):
         }
 
     @classmethod
-    def by_id(cls, host_id):
-        result = cls.query.filter_by(id=host_id)
+    def by_id(cls, id):
+        result = cls.query.filter_by(id=id)
         return result.first()
 
     @classmethod
     def by_ids(cls, host_ids):
         return cls.query.filter(cls.id.in_(host_ids))
+
+    @classmethod
+    def by_name(cls, name):
+        result = cls.query.filter_by(name=name)
+        return result.first()
 
     @classmethod
     def by_ssh_key_id(cls, id):

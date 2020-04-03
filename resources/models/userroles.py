@@ -17,6 +17,8 @@ class UserRolesModel(db.Model):
 
     @staticmethod
     def to_json(user_role):
+        if user_role is None:
+            return {}
         return {
             'id': user_role.id,
             'created_at': user_role.created_at.isoformat() if user_role.created_at else None,
@@ -24,6 +26,20 @@ class UserRolesModel(db.Model):
             'deleted_at': user_role.deleted_at.isoformat() if user_role.deleted_at else None,
             'name': user_role.name,
         }
+
+    @classmethod
+    def by_id(cls, id):
+        result = cls.query.filter_by(id=id)
+        return result.first()
+
+    @classmethod
+    def by_ids(cls, ids):
+        return cls.query.filter(cls.id.in_(ids))
+
+    @classmethod
+    def by_name(cls, name):
+        result = cls.query.filter_by(name=name)
+        return result.first()
 
     @classmethod
     def return_all(cls):

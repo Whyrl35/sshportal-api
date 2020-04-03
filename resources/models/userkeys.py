@@ -20,6 +20,9 @@ class UserKeysModel(db.Model):
 
     @staticmethod
     def to_json(user_key):
+        if user_key is None:
+            return {}
+
         key = paramiko.RSAKey(data=user_key.key) if user_key.key else None
         base64_key = key.get_base64() if key else None
 
@@ -33,6 +36,10 @@ class UserKeysModel(db.Model):
             'comment': user_key.comment,
             'authorized_key': user_key.authorized_key,
         }
+
+    @classmethod
+    def by_id(cls, user_group_id):
+        return cls.query.filter_by(id=user_group_id).first()
 
     @classmethod
     def return_all(cls):
