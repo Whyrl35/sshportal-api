@@ -1,10 +1,4 @@
-import pytest
 from sshportal_api.models.users import UserModel
-
-
-@pytest.fixture(scope='module')
-def init_database():
-    pass
 
 
 def test_find_user_name():
