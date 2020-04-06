@@ -1,7 +1,7 @@
 from flask_restful import Resource
 from flask_jwt_extended import jwt_required
-from run import api
-from .models import HostGroupsModel, HostHostGroupsModel, HostsModel, SshKeysModel
+from sshportal_api import api
+from sshportal_api.models import HostGroupsModel, HostHostGroupsModel, HostsModel, SshKeysModel
 
 
 class Hosts(Resource):

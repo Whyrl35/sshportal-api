@@ -1,7 +1,7 @@
 from flask_restful import Resource
 from flask_jwt_extended import jwt_required
-from run import api
-from .models import EventsModel
+from sshportal_api import api
+from sshportal_api.models import EventsModel
 
 
 class Events(Resource):

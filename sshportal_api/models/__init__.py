@@ -1,5 +1,5 @@
 from sqlalchemy import MetaData
-from run import app
+from sshportal_api import app
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 

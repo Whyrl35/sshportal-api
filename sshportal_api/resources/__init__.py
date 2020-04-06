@@ -1,4 +1,3 @@
-from .models import *  # noqa
 from .users import *  # noqa
 from .acls import *  # noqa
 from .events import *  # noqa

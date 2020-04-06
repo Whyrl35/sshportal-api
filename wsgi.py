@@ -24,7 +24,7 @@ sys.path.insert(0, '{v}/lib'.format(v=VENV))
 sys.path.insert(0, '{v}'.format(v=HOME))
 
 # Load the default app
-from run import app
+from sshportal_api import app
 
 # Propagate the exceptions to get the right message in json
 app.config.update(PROPAGATE_EXCEPTIONS=True)
