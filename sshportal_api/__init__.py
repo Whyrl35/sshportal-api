@@ -29,5 +29,3 @@ def check_if_token_in_blacklist(decrypted_token):
 
     jti = decrypted_token['jti']
     return sshportal_api.models.RevokedTokenModel.is_jti_blacklisted(jti)
-
-
