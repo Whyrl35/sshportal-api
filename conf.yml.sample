@@ -5,4 +5,4 @@ jwt_secret_key: '__my__super__long__jwt__secret__to__be__replaced__'
 database:
   type: sqlite
   sqlite:
-    uri: sqlite:///sshportal.db
+    uri: sqlite:///../sshportal.db
