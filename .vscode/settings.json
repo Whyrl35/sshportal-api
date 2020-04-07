@@ -1,6 +1,0 @@
-{
-    "python.pythonPath": "venv/bin/python3.7",
-    "docker.imageBuildContextPath": ".",
-    "docker.commands.build": "docker build --rm -f \"${dockerfile}\" -t ${tag} \"${context}\"",
-    "docker.commands.runInteractive": "docker run --rm -it ${exposedPorts} -v /srv/sshportal:/data ${tag}"
-}

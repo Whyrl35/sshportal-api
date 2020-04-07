@@ -17,7 +17,7 @@ def test_find_user_name():
 def test_find_user_id():
     """
     GIVEN a User model
-    WHEN test the default user
+    WHEN test the default user by id
     THEN check the email, hashed_password, and somes fields are well configured
     """
     user = UserModel.by_id(1)
