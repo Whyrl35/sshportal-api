@@ -16,12 +16,14 @@
 ## Migrate your database to be compatible
 
 ```commandline
+# export FLASK_APP=run.py
 # flask db upgrade
 ```
 
 ## How to test installation
 
 ```commandline
+# export FLASK_APP=run.py
 # flask run
 ```
 

@@ -26,5 +26,3 @@ def test_acls_to_json():
     assert acl_json['created_at'] == (acl.created_at.isoformat() if acl.created_at else acl.created_at)
     assert acl_json['updated_at'] == (acl.updated_at.isoformat() if acl.updated_at else acl.updated_at)
     assert acl_json['deleted_at'] == (acl.deleted_at.isoformat() if acl.deleted_at else acl.deleted_at)
-
-

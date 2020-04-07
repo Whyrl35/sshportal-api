@@ -1,0 +1,8 @@
+venv*
+*.db
+*.db.back
+conf.yml
+*.egg-info
+.vscode
+__pycache__
+.git

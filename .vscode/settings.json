@@ -1,3 +1,5 @@
 {
-    "python.pythonPath": "venv/bin/python3.7"
+    "python.pythonPath": "venv/bin/python3.7",
+    "docker.imageBuildContextPath": ".",
+    "docker.commands.build": "docker build --rm -f \"${dockerfile}\" -t ${tag} \"${context}\""
 }
