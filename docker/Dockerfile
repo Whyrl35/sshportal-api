@@ -15,10 +15,6 @@ RUN virtualenv -p python3 venv
 
 ENV PATH="/app/venv/bin:$PATH"
 
-RUN set -ex && \
-    pwd && \
-    ls -l
-
 RUN . venv/bin/activate && \
     pip install -r requirements.txt
 

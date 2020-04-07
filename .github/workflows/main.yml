@@ -1,9 +1,6 @@
 name: build-deploy
 
-on:
-  push:
-    branches:
-      - master
+on: [push]
 
 jobs:
   build-test:
@@ -55,8 +52,6 @@ jobs:
           pip install virtualenv
           virtualenv -p python venv
           pip install -r requirements.txt
-          pip install pytest
-          pip install -e .
       - name: Push to Docker Hub
         uses: docker/build-push-action@v1
         with:
