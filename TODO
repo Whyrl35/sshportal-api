@@ -1,0 +1,54 @@
+development:
+    ☐ add needed routes
+
+tests:
+    models:
+        ✔ test acls @done(20-04-07 21:31)
+        ✔ test events @done(20-04-07 21:32)
+        ☐ test hostgroups
+        ☐ test hosts
+        ☐ test sessions
+        ☐ test settings
+        ☐ test sshkeys
+        ☐ test usergroups
+        ☐ test userkeys
+        ☐ test userroles
+        ☐ test users
+    api:
+        ☐ test acls
+        ☐ test events
+        ☐ test hostgroups
+        ☐ test hosts
+        ☐ test sessions
+        ☐ test settings
+        ☐ test sshkeys
+        ☐ test usergroups
+        ☐ test userkeys
+        ☐ test userroles
+        ☐ test users
+
+Documentations:
+    api:
+        ✔ document acls @done(20-04-07 21:42)
+        ☐ document events
+        ☐ document hostgroups
+        ☐ document hosts
+        ☐ document sessions
+        ☐ document settings
+        ☐ document sshkeys
+        ☐ document usergroups
+        ☐ document userkeys
+        ☐ document userroles
+        ☐ document users
+
+Deploy:
+    ☐ pull the container on ks
+    ☐ backup the original sshportal.db
+    ☐ create the configuration file
+    ☐ migrate the database
+    ☐ run the container
+    ☐ test that it's working localy
+    ☐ make nginx configuration (salt) behing a /api route ? @low
+    ☐ deploy a swagger website ? @low
+    ☐ make webhook configuration (salt)
+    ☐ add hook on dockerhub or github to call an upgrade of the container
