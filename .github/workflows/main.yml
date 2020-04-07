@@ -31,6 +31,9 @@ jobs:
         run: |
           cp conf.yml.sample conf.yml
           cp sshportal.db.sample sshportal.db
+      - name: Migrate the Database
+        run: |
+          FLASK_APP=run.py flask db upgrade
       - name: Launch pytest
         run: |
           pytest
