@@ -3,9 +3,15 @@ from flask_jwt_extended import JWTManager
 from flask_cors import CORS
 from flask_restful_swagger_2 import Api
 import yaml
+import os
 
 
-with open("conf.yml", 'r') as config_file:
+if "CONF_PATH" in os.environ:
+    conf_path = os.environ['CONF_PATH']
+else:
+    conf_path = "."
+
+with open("{conf_path}/conf.yml".format(conf_path=conf_path), 'r') as config_file:
     configuration = yaml.load(config_file, Loader=yaml.FullLoader)
 
 app = Flask(__name__)

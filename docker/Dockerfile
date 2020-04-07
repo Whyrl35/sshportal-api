@@ -22,6 +22,11 @@ RUN set -ex && \
 RUN . venv/bin/activate && \
     pip install -r requirements.txt
 
+VOLUME ["/data"]
+
+ENV CONF_PATH="/data"
+
 EXPOSE 8000
 
-CMD ["gunicorn", "--bind", "0.0.0.0:8000", "run:app"]
+ENTRYPOINT [ "gunicorn" ]
+CMD [ "--bind", "0.0.0.0:8000", "run:app" ]
