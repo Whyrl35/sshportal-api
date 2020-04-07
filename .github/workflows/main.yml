@@ -18,7 +18,8 @@ jobs:
         uses: actions/checkout@master
       - name: Build virtualenv
         run: |
-          virtualenv -p python3 venv
+          pip install virtualenv
+          virtualenv -p python venv
           pip install -r requirements
           pip install pytest
           pip install -e .
