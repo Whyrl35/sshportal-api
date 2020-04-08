@@ -29,3 +29,6 @@ def test_events_to_json():
     assert event.author_id == event_json['author_id']
     assert event.action == event_json['action']
     assert event.entity == event_json['entity']
+    assert event_json['created_at'] == (event.created_at.isoformat() if event.created_at else event.created_at)
+    assert event_json['updated_at'] == (event.updated_at.isoformat() if event.updated_at else event.updated_at)
+    assert event_json['deleted_at'] == (event.deleted_at.isoformat() if event.deleted_at else event.deleted_at)

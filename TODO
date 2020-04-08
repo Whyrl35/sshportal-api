@@ -5,15 +5,15 @@ tests:
     models:
         ✔ test acls @done(20-04-07 21:31)
         ✔ test events @done(20-04-07 21:32)
-        ☐ test hostgroups
-        ☐ test hosts
-        ☐ test sessions
+        ✔ test hostgroups @done(20-04-08 12:19)
+        ✔ test hosts @done(20-04-08 15:18)
+        ✔ test sessions @done(20-04-08 15:18)
         ☐ test settings
         ☐ test sshkeys
         ☐ test usergroups
         ☐ test userkeys
         ☐ test userroles
-        ☐ test users
+        ✔ test users @done(20-04-08 11:10)
     api:
         ☐ test acls
         ☐ test events

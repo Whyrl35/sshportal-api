@@ -21,6 +21,10 @@ class UserModel(db.Model):
         db.session.add(self)
         db.session.commit()
 
+    def delete(self):
+        db.session.delete(self)
+        db.session.commit()
+
     @staticmethod
     def to_json(user):
         if user is None:

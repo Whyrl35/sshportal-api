@@ -43,3 +43,14 @@ def test_user_to_json():
     assert user_json['updated_at'] == (user.updated_at.isoformat() if user.updated_at else user.updated_at)
     assert user_json['deleted_at'] == (user.deleted_at.isoformat() if user.deleted_at else user.deleted_at)
     assert user.is_admin == user_json['is_admin']
+
+
+def test_user_hash():
+    """
+    GIVEN a User model
+    WHEN test the password hashing method
+    THEN checkt the password and its hash
+    """
+    password = "MyTestingPassword"
+    hashed = UserModel.generate_hash(password)
+    assert UserModel.verify_hash(password, hashed) is True
