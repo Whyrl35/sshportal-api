@@ -23,6 +23,7 @@ jobs:
           virtualenv -p python venv
           pip install -r requirements.txt
           pip install pytest
+          pip install pytest-flask
           pip install -e .
       - name: Prepare temporary configuration file
         run: |
