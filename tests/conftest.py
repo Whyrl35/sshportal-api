@@ -31,3 +31,13 @@ def create_test_user():
 
     for record in created_users:
         record.delete()
+
+
+@pytest.fixture
+def access_token(request):
+    return request.config.cache.get('sshportal_api/access_token', None)
+
+
+@pytest.fixture
+def refresh_token(request):
+    return request.config.cache.get('sshportal_api/refresh_token', None)
