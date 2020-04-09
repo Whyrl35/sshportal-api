@@ -8,24 +8,24 @@ tests:
         ✔ test hostgroups @done(20-04-08 12:19)
         ✔ test hosts @done(20-04-08 15:18)
         ✔ test sessions @done(20-04-08 15:18)
-        ☐ test settings
-        ☐ test sshkeys
-        ☐ test usergroups
-        ☐ test userkeys
-        ☐ test userroles
+        ✔ test settings @done(20-04-09 16:34)
+        ✔ test sshkeys @done(20-04-09 16:34)
+        ✔ test usergroups @done(20-04-09 16:34)
+        ✔ test userkeys @done(20-04-09 16:34)
+        ✔ test userroles @done(20-04-09 16:34)
         ✔ test users @done(20-04-08 11:10)
     api:
-        ☐ test acls
-        ☐ test events
-        ☐ test hostgroups
-        ☐ test hosts
-        ☐ test sessions
+        ✔ test acls @done(20-04-09 16:34)
+        ✔ test events @done(20-04-09 16:34)
+        ✔ test hostgroups @done(20-04-09 16:34)
+        ✔ test hosts @done(20-04-09 16:34)
+        ✔ test sessions @done(20-04-09 16:34)
         ☐ test settings
         ☐ test sshkeys
         ☐ test usergroups
         ☐ test userkeys
         ☐ test userroles
-        ☐ test users
+        ✔ test users @done(20-04-09 16:34)
 
 Documentations:
     api:
