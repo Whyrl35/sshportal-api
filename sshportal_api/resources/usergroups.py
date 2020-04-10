@@ -2,9 +2,57 @@ from flask_restful import Resource
 from flask_jwt_extended import jwt_required
 from sshportal_api import api
 from sshportal_api.models import UserGroupsModel, UserUserGroupsModel, UserModel, UserGroupAclModel, AclsModel
+from flask_restful_swagger_2 import swagger
 
 
 class UserGroups(Resource):
+    @swagger.doc({
+        'tags': ['usergroup'],
+        'description': "Return list of usergroups",
+        'responses': {
+            '200': {
+                'description': "A list of usergroups",
+                'examples': {
+                    'application/json': [
+                        {
+                            "id": 1,
+                            "created_at": "2019-11-13T16:08:45.480323",
+                            "updated_at": "2019-11-13T16:08:45.491408",
+                            "deleted_at": None,
+                            "name": "default",
+                            "comment": "created by sshportal",
+                            "users": [
+                                {
+                                    "id": 1,
+                                    "name": "admin",
+                                    "password": None,
+                                    "created_at": "2019-11-13T16:08:45.490830",
+                                    "updated_at": "2019-11-13T16:39:21.114928",
+                                    "deleted_at": None,
+                                    "is_admin": None,
+                                    "email": "admin@localhost",
+                                    "comment": "created by sshportal",
+                                    "invite_token": "1234567890"
+                                }
+                            ],
+                            "acls": [
+                                {
+                                    "id": 1,
+                                    "created_at": "2019-11-13T16:08:45.484494",
+                                    "updated_at": "2019-11-13T16:08:45.484494",
+                                    "deleted_at": None,
+                                    "host_pattern": "",
+                                    "action": "allow",
+                                    "weight": 0,
+                                    "comment": "created by sshportal"
+                                }
+                            ]
+                        },
+                    ]
+                }
+            }
+        }
+    })
     @jwt_required
     def get(self):
         usergroups_json = []
@@ -31,6 +79,57 @@ class UserGroups(Resource):
 
 
 class UserGroupId(Resource):
+    @swagger.doc({
+        'tags': ['usergroup'],
+        'description': "Return a usergroup that match the given ID",
+        'parameters': [
+            {
+                'name': 'id',
+                'description': 'the id of a usergroup',
+                'in': 'path',
+                'type': 'integer',
+            }
+        ],
+        'responses': {
+            '200': {
+                'description': "The usergroup that match the ID",
+                'examples': {
+                    "id": 1,
+                    "created_at": "2019-11-13T16:08:45.480323",
+                    "updated_at": "2019-11-13T16:08:45.491408",
+                    "deleted_at": None,
+                    "name": "default",
+                    "comment": "created by sshportal",
+                    "users": [
+                        {
+                            "id": 1,
+                            "name": "admin",
+                            "password": None,
+                            "created_at": "2019-11-13T16:08:45.490830",
+                            "updated_at": "2019-11-13T16:39:21.114928",
+                            "deleted_at": None,
+                            "is_admin": None,
+                            "email": "admin@localhost",
+                            "comment": "created by sshportal",
+                            "invite_token": "1234567890"
+                        }
+                    ],
+                    "acls": [
+                        {
+                            "id": 1,
+                            "created_at": "2019-11-13T16:08:45.484494",
+                            "updated_at": "2019-11-13T16:08:45.484494",
+                            "deleted_at": None,
+                            "host_pattern": "",
+                            "action": "allow",
+                            "weight": 0,
+                            "comment": "created by sshportal"
+                        }
+                    ]
+                }
+            }
+        }
+    })
     @jwt_required
     def get(self, id):
         usergroup = UserGroupsModel.by_id(id)
@@ -53,6 +152,57 @@ class UserGroupId(Resource):
 
 
 class UserGroupName(Resource):
+    @swagger.doc({
+        'tags': ['usergroup'],
+        'description': "Return a usergroup that match the given name",
+        'parameters': [
+            {
+                'name': 'name',
+                'description': 'the name of a usergroup',
+                'in': 'path',
+                'type': 'string',
+            }
+        ],
+        'responses': {
+            '200': {
+                'description': "The usergroup that match the name",
+                'examples': {
+                    "id": 1,
+                    "created_at": "2019-11-13T16:08:45.480323",
+                    "updated_at": "2019-11-13T16:08:45.491408",
+                    "deleted_at": None,
+                    "name": "default",
+                    "comment": "created by sshportal",
+                    "users": [
+                        {
+                            "id": 1,
+                            "name": "admin",
+                            "password": None,
+                            "created_at": "2019-11-13T16:08:45.490830",
+                            "updated_at": "2019-11-13T16:39:21.114928",
+                            "deleted_at": None,
+                            "is_admin": None,
+                            "email": "admin@localhost",
+                            "comment": "created by sshportal",
+                            "invite_token": "1234567890"
+                        }
+                    ],
+                    "acls": [
+                        {
+                            "id": 1,
+                            "created_at": "2019-11-13T16:08:45.484494",
+                            "updated_at": "2019-11-13T16:08:45.484494",
+                            "deleted_at": None,
+                            "host_pattern": "",
+                            "action": "allow",
+                            "weight": 0,
+                            "comment": "created by sshportal"
+                        }
+                    ]
+                }
+            }
+        }
+    })
     @jwt_required
     def get(self, name):
         usergroup = UserGroupsModel.by_name(name)

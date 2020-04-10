@@ -2,9 +2,37 @@ from flask_restful import Resource
 from flask_jwt_extended import jwt_required
 from sshportal_api import api
 from sshportal_api.models import HostsModel, SshKeysModel
+from flask_restful_swagger_2 import swagger
 
 
 class Keys(Resource):
+    @swagger.doc({
+        'tags': ['key'],
+        'description': "Return list of keys",
+        'responses': {
+            '200': {
+                'description': "A list of keys",
+                'examples': {
+                    'application/json': [
+                        {
+                            "id": 1,
+                            "created_at": "2019-11-13T16:08:45.471568",
+                            "updated_at": "2019-11-13T16:08:45.471568",
+                            "deleted_at": None,
+                            "name": "default",
+                            "type": "rsa",
+                            "length": 2048,
+                            "fingerprint": "",
+                            "priv_key": "-----BEGIN RSA PRIVATE KEY-----\n......\n-----END RSA PRIVATE KEY-----\n",
+                            "pub_key": "ssh-rsa AAAAB3N.........Ez",
+                            "comment": "created by sshportal",
+                            "hosts": []
+                        },
+                    ]
+                }
+            }
+        }
+    })
     @jwt_required
     def get(self):
         keys_json = []
@@ -23,6 +51,37 @@ class Keys(Resource):
 
 
 class KeyId(Resource):
+    @swagger.doc({
+        'tags': ['key'],
+        'description': "Return a key that match the given ID",
+        'parameters': [
+            {
+                'name': 'id',
+                'description': 'the id of a key',
+                'in': 'path',
+                'type': 'integer',
+            }
+        ],
+        'responses': {
+            '200': {
+                'description': "The key that match the ID",
+                'examples': {
+                    "id": 1,
+                    "created_at": "2019-11-13T16:08:45.471568",
+                    "updated_at": "2019-11-13T16:08:45.471568",
+                    "deleted_at": None,
+                    "name": "default",
+                    "type": "rsa",
+                    "length": 2048,
+                    "fingerprint": "",
+                    "priv_key": "-----BEGIN RSA PRIVATE KEY-----\n......\n-----END RSA PRIVATE KEY-----\n",
+                    "pub_key": "ssh-rsa AAAAB3N.........Ez",
+                    "comment": "created by sshportal",
+                    "hosts": []
+                },
+            }
+        }
+    })
     @jwt_required
     def get(self, id):
         key = SshKeysModel.by_id(id)
@@ -37,6 +96,37 @@ class KeyId(Resource):
 
 
 class KeyName(Resource):
+    @swagger.doc({
+        'tags': ['key'],
+        'description': "Return a key that match the given name",
+        'parameters': [
+            {
+                'name': 'name',
+                'description': 'the name of a key',
+                'in': 'path',
+                'type': 'integer',
+            }
+        ],
+        'responses': {
+            '200': {
+                'description': "The key that match the name",
+                'examples': {
+                    "id": 1,
+                    "created_at": "2019-11-13T16:08:45.471568",
+                    "updated_at": "2019-11-13T16:08:45.471568",
+                    "deleted_at": None,
+                    "name": "default",
+                    "type": "rsa",
+                    "length": 2048,
+                    "fingerprint": "",
+                    "priv_key": "-----BEGIN RSA PRIVATE KEY-----\n......\n-----END RSA PRIVATE KEY-----\n",
+                    "pub_key": "ssh-rsa AAAAB3N.........Ez",
+                    "comment": "created by sshportal",
+                    "hosts": []
+                },
+            }
+        }
+    })
     @jwt_required
     def get(self, name):
         key = SshKeysModel.by_name(name)

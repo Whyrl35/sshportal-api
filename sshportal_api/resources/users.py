@@ -5,6 +5,7 @@ from flask_jwt_extended import (create_access_token, create_refresh_token, jwt_r
                                 get_jwt_identity, get_raw_jwt)
 from sshportal_api import api
 from sshportal_api.models import UserModel, RevokedTokenModel
+from flask_restful_swagger_2 import swagger
 import datetime
 
 
@@ -14,6 +15,30 @@ parser.add_argument('password', help='This field cannot be blank', required=True
 
 
 class Registration(Resource):
+    @swagger.doc({
+        'tags': ['user'],
+        'description': "Register a new user",
+        'responses': {
+            '200': {
+                'description': "Register a new user",
+                'examples': {
+                    'application/json': {}
+                }
+            },
+            '401': {
+                'description': "Your are not authorized to register the user",
+                'examples': {
+                    'application/json': {}
+                }
+            },
+            '500': {
+                'description': "Failed to register the user",
+                'examples': {
+                    'application/json': {}
+                }
+            }
+        }
+    })
     def post(self):
 
         if request.remote_addr != '127.0.0.1':
@@ -43,6 +68,31 @@ class Registration(Resource):
 
 
 class Login(Resource):
+    @swagger.doc({
+        'tags': ['user'],
+        'description': "Login a user",
+        'responses': {
+            '200': {
+                'description': "Login a user",
+                'examples': {
+                    'application/json': {
+                        "message": "Logged in as ludovic",
+                        "user": "ludovic",
+                        "access_token": "eyJ0....6g",
+                        "refresh_token": "eyJ0....74"
+                    }
+                }
+            },
+            '401': {
+                'description': "Your are not authorized to register the user",
+                'examples': {
+                    'application/json': {
+                        "message": "Wrong credentials"
+                    }
+                }
+            }
+        }
+    })
     def post(self):
         data = parser.parse_args()
         current_user = UserModel.find_by_name(data['name'])
