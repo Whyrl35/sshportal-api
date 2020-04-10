@@ -20,11 +20,11 @@ tests:
         ✔ test hostgroups @done(20-04-09 16:34)
         ✔ test hosts @done(20-04-09 16:34)
         ✔ test sessions @done(20-04-09 16:34)
-        ☐ test settings
-        ☐ test sshkeys
-        ☐ test usergroups
-        ☐ test userkeys
-        ☐ test userroles
+        ✔ test settings @done(20-04-09 21:26)
+        ✔ test sshkeys @done(20-04-09 21:26)
+        ✔ test usergroups @done(20-04-09 21:26)
+        ✔ test userkeys @done(20-04-09 21:26)
+        ✔ test userroles @done(20-04-09 21:26)
         ✔ test users @done(20-04-09 16:34)
 
 Documentations:

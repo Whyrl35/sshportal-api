@@ -2,9 +2,44 @@ from flask_restful import Resource
 from flask_jwt_extended import jwt_required
 from sshportal_api import api
 from sshportal_api.models import HostGroupsModel, HostGroupAclsModel, AclsModel, HostHostGroupsModel, HostsModel
+from flask_restful_swagger_2 import swagger
 
 
 class HostGroups(Resource):
+    @swagger.doc({
+        'tags': ['hostgroup'],
+        'description': "Return list of hostgroups",
+        'responses': {
+            '200': {
+                'description': "A list of hostgroups",
+                'examples': {
+                    'application/json': [
+                        {
+                            "id": 1,
+                            "created_at": "2019-11-13T16:08:45.476325",
+                            "updated_at": "2019-11-13T16:08:45.485020",
+                            "deleted_at": None,
+                            "name": "default",
+                            "comment": "created by sshportal",
+                            "acls": [
+                                {
+                                    "id": 1,
+                                    "created_at": "2019-11-13T16:08:45.484494",
+                                    "updated_at": "2019-11-13T16:08:45.484494",
+                                    "deleted_at": None,
+                                    "host_pattern": "",
+                                    "action": "allow",
+                                    "weight": 0,
+                                    "comment": "created by sshportal"
+                                }
+                            ],
+                            "hosts": []
+                        },
+                    ]
+                }
+            }
+        }
+    })
     @jwt_required
     def get(self):
         host_groups_json = []
@@ -30,6 +65,46 @@ class HostGroups(Resource):
 
 
 class HostGroupId(Resource):
+    @swagger.doc({
+        'tags': ['hostgroup'],
+        'description': "Return a hostgroup that match the given ID",
+        'parameters': [
+            {
+                'name': 'id',
+                'description': 'the id of a hostgroup',
+                'in': 'path',
+                'type': 'integer',
+            }
+        ],
+        'responses': {
+            '200': {
+                'description': "The hostgroup that match the ID",
+                'examples': {
+                    'application/json': {
+                        "id": 1,
+                        "created_at": "2019-11-13T16:08:45.476325",
+                        "updated_at": "2019-11-13T16:08:45.485020",
+                        "deleted_at": None,
+                        "name": "default",
+                        "comment": "created by sshportal",
+                        "acls": [
+                            {
+                                "id": 1,
+                                "created_at": "2019-11-13T16:08:45.484494",
+                                "updated_at": "2019-11-13T16:08:45.484494",
+                                "deleted_at": None,
+                                "host_pattern": "",
+                                "action": "allow",
+                                "weight": 0,
+                                "comment": "created by sshportal"
+                            }
+                        ],
+                        "hosts": []
+                    }
+                }
+            }
+        }
+    })
     @jwt_required
     def get(self, id):
         host_group = HostGroupsModel.by_id(id)
@@ -51,6 +126,46 @@ class HostGroupId(Resource):
 
 
 class HostGroupName(Resource):
+    @swagger.doc({
+        'tags': ['hostgroup'],
+        'description': "Return a hostgroup that match the given name",
+        'parameters': [
+            {
+                'name': 'name',
+                'description': 'the name of a hostgroup',
+                'in': 'path',
+                'type': 'string',
+            }
+        ],
+        'responses': {
+            '200': {
+                'description': "The hostgroup that match the name",
+                'examples': {
+                    'application/json': {
+                        "id": 1,
+                        "created_at": "2019-11-13T16:08:45.476325",
+                        "updated_at": "2019-11-13T16:08:45.485020",
+                        "deleted_at": None,
+                        "name": "default",
+                        "comment": "created by sshportal",
+                        "acls": [
+                            {
+                                "id": 1,
+                                "created_at": "2019-11-13T16:08:45.484494",
+                                "updated_at": "2019-11-13T16:08:45.484494",
+                                "deleted_at": None,
+                                "host_pattern": "",
+                                "action": "allow",
+                                "weight": 0,
+                                "comment": "created by sshportal"
+                            }
+                        ],
+                        "hosts": []
+                    }
+                }
+            }
+        }
+    })
     @jwt_required
     def get(self, name):
         host_group = HostGroupsModel.by_name(name)
