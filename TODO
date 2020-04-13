@@ -1,5 +1,6 @@
 development:
     ☐ add needed routes
+    ☐ rewrite user-mgt script to make it work
 
 tests:
     models:
@@ -30,25 +31,25 @@ tests:
 Documentations:
     api:
         ✔ document acls @done(20-04-07 21:42)
-        ☐ document events
-        ☐ document hostgroups
-        ☐ document hosts
-        ☐ document sessions
-        ☐ document settings
-        ☐ document sshkeys
-        ☐ document usergroups
-        ☐ document userkeys
-        ☐ document userroles
+        ✔ document events @done(20-04-10 13:59)
+        ✔ document hostgroups @done(20-04-10 13:59)
+        ✔ document hosts @done(20-04-10 13:59)
+        ✔ document sessions @done(20-04-10 13:59)
+        ✔ document settings @done(20-04-10 13:59)
+        ✔ document sshkeys @done(20-04-10 13:59)
+        ✔ document usergroups @done(20-04-10 13:59)
+        ✔ document userkeys @done(20-04-10 13:59)
+        ✔ document userroles @done(20-04-10 13:59)
         ☐ document users
 
 Deploy:
-    ☐ pull the container on ks
-    ☐ backup the original sshportal.db
-    ☐ create the configuration file
-    ☐ migrate the database
-    ☐ run the container
-    ☐ test that it's working localy
+    ✔ pull the container on ks @done(20-04-10 16:08)
+    ✔ backup the original sshportal.db @done(20-04-10 16:08)
+    ✔ create the configuration file @done(20-04-10 16:08)
+    ✔ migrate the database @done(20-04-13 11:55)
+    ✔ run the container @done(20-04-13 11:56)
+    ✔ test that it's working localy @done(20-04-13 11:56)
     ☐ make nginx configuration (salt) behing a /api route ? @low
     ☐ deploy a swagger website ? @low
-    ☐ make webhook configuration (salt)
-    ☐ add hook on dockerhub or github to call an upgrade of the container
+    ✔ make webhook configuration (salt) @done(20-04-10 16:08)
+    ✔ add hook on dockerhub or github to call an upgrade of the container @done(20-04-10 16:08)

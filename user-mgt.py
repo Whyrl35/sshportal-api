@@ -26,11 +26,11 @@ if BASE_DIR not in sys.path:
     sys.path.insert(0, BASE_DIR)
 os.chdir(BASE_DIR)
 
-from resources.models import UserModel
+from sshportal_api.models import UserModel
 
 
 def register(user, password):
-    userobj = UserModel.find_by_username(user)
+    userobj = UserModel.find_by_name(user)
 
     if not userobj:
         return 'User {} do not exists, create it via sshportal command line'.format(user)
@@ -48,7 +48,7 @@ def register(user, password):
 
 
 def exists(user):
-    if UserModel.find_by_username(user):
+    if UserModel.find_by_name(user):
         print('User {} already exists'.format(user))
         sys.exit(0)
     else:

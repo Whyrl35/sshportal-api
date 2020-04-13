@@ -2,7 +2,7 @@
 # clone new repo, build image, (no db, no conf)
 # env for conf or read from external
 # db read from external
-FROM python:3.8-slim-buster
+FROM python:3.7-slim-buster
 
 RUN pip install --upgrade pip && \
     pip install virtualenv
