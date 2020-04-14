@@ -83,6 +83,20 @@ class Login(Resource):
     @swagger.doc({
         'tags': ['user'],
         'description': "Login a user",
+        'parameters': [
+            {
+                'name': 'name',
+                'description': 'the name of the user',
+                'in': 'query',
+                'schema': {'type': 'string'}
+            },
+            {
+                'name': 'password',
+                'description': 'the password of the user',
+                'in': 'query',
+                'schema': {'type': 'password'}
+            }
+        ],
         'responses': {
             '200': {
                 'description': "Login a user",

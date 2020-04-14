@@ -24,8 +24,15 @@ app.config['JWT_BLACKLIST_TOKEN_CHECKS'] = ['access', 'refresh']
 app.config['DATABASE'] = configuration['database']
 app.config['SWAGGER_PROD_URL'] = configuration['swagger']['prod']['url']
 
-api = Api(app, version='0.1', api_spec_url="/v1/spec", servers=[{"url": app.config['SWAGGER_PROD_URL'],
-                                                                 "description": "Production server"}])
+api = Api(app, version='0.1',
+          api_spec_url="/v1/spec",
+          servers=[{"url": app.config['SWAGGER_PROD_URL'], "description": "Production server"}],
+          contact='ludovic.houdayer@gm@il.com',
+          description="An API over the moul/sshportal project, SSH bastion.",
+          license="MIT",
+          components={"securitySchemes": {"bearerAuth": {"type": "https", "scheme": "bearer", "bearerFormat": "Bearer"}}}
+          # security={"bearerAuth": []},
+          )
 jwt = JWTManager(app)
 
 from sshportal_api.resources import *  # noqa

@@ -7,6 +7,7 @@ from flask_restful_swagger_3 import swagger
 
 class Acls(Resource):
     @swagger.doc({
+        'security': {'bearerAuth': []},
         'tags': ['acl'],
         'description': "Return list of acls",
         'responses': {
