@@ -7,6 +7,7 @@ from flask_restful_swagger_3 import swagger
 
 class UserRoles(Resource):
     @swagger.doc({
+        'security': [{'bearerAuth': []}],
         'tags': ['userroles'],
         'description': "Return list of userroles",
         'responses': {
@@ -65,6 +66,7 @@ class UserRoles(Resource):
 
 class UserRoleId(Resource):
     @swagger.doc({
+        'security': [{'bearerAuth': []}],
         'tags': ['userrole'],
         'description': "Return a userrole that match the given ID",
         'parameters': [
@@ -123,6 +125,7 @@ class UserRoleId(Resource):
 
 class UserRoleName(Resource):
     @swagger.doc({
+        'security': [{'bearerAuth': []}],
         'tags': ['userrole'],
         'description': "Return a userrole that match the given name",
         'parameters': [

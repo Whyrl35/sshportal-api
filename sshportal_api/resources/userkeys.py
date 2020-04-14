@@ -7,6 +7,7 @@ from flask_restful_swagger_3 import swagger
 
 class UserKeys(Resource):
     @swagger.doc({
+        'security': [{'bearerAuth': []}],
         'tags': ['userkey'],
         'description': "Return list of userkeys",
         'responses': {
@@ -63,6 +64,7 @@ class UserKeys(Resource):
 
 class UserKey(Resource):
     @swagger.doc({
+        'security': [{'bearerAuth': []}],
         'tags': ['userkey'],
         'description': "Return a userkey that match the given ID",
         'parameters': [

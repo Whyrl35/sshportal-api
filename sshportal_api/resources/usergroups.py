@@ -7,6 +7,7 @@ from flask_restful_swagger_3 import swagger
 
 class UserGroups(Resource):
     @swagger.doc({
+        'security': [{'bearerAuth': []}],
         'tags': ['usergroup'],
         'description': "Return list of usergroups",
         'responses': {
@@ -84,6 +85,7 @@ class UserGroups(Resource):
 
 class UserGroupId(Resource):
     @swagger.doc({
+        'security': [{'bearerAuth': []}],
         'tags': ['usergroup'],
         'description': "Return a usergroup that match the given ID",
         'parameters': [
@@ -161,6 +163,7 @@ class UserGroupId(Resource):
 
 class UserGroupName(Resource):
     @swagger.doc({
+        'security': [{'bearerAuth': []}],
         'tags': ['usergroup'],
         'description': "Return a usergroup that match the given name",
         'parameters': [

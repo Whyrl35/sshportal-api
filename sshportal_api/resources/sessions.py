@@ -7,6 +7,7 @@ from flask_restful_swagger_3 import swagger
 
 class Sessions(Resource):
     @swagger.doc({
+        'security': [{'bearerAuth': []}],
         'tags': ['session'],
         'description': "Return list of sessions",
         'responses': {
@@ -84,6 +85,7 @@ class Sessions(Resource):
 
 class Session(Resource):
     @swagger.doc({
+        'security': [{'bearerAuth': []}],
         'tags': ['session'],
         'description': "Return a session that match the given ID",
         'parameters': [

@@ -7,6 +7,7 @@ from flask_restful_swagger_3 import swagger
 
 class Settings(Resource):
     @swagger.doc({
+        'security': [{'bearerAuth': []}],
         'tags': ['setting'],
         'description': "Return list of settings",
         'responses': {
@@ -29,6 +30,7 @@ class Settings(Resource):
 
 class Setting(Resource):
     @swagger.doc({
+        'security': [{'bearerAuth': []}],
         'tags': ['setting'],
         'description': "Return a setting that match the given ID",
         'parameters': [

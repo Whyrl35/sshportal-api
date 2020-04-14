@@ -7,6 +7,7 @@ from flask_restful_swagger_3 import swagger
 
 class Keys(Resource):
     @swagger.doc({
+        'security': [{'bearerAuth': []}],
         'tags': ['key'],
         'description': "Return list of keys",
         'responses': {
@@ -56,6 +57,7 @@ class Keys(Resource):
 
 class KeyId(Resource):
     @swagger.doc({
+        'security': [{'bearerAuth': []}],
         'tags': ['key'],
         'description': "Return a key that match the given ID",
         'parameters': [
@@ -105,6 +107,7 @@ class KeyId(Resource):
 
 class KeyName(Resource):
     @swagger.doc({
+        'security': [{'bearerAuth': []}],
         'tags': ['key'],
         'description': "Return a key that match the given name",
         'parameters': [

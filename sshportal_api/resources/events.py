@@ -7,6 +7,7 @@ from flask_restful_swagger_3 import swagger
 
 class Events(Resource):
     @swagger.doc({
+        'security': [{'bearerAuth': []}],
         'tags': ['event'],
         'description': "Return list of events",
         'responses': {
@@ -41,6 +42,7 @@ class Events(Resource):
 
 class Event(Resource):
     @swagger.doc({
+        'security': [{'bearerAuth': []}],
         'tags': ['event'],
         'description': "Return an event that match the given ID",
         'parameters': [

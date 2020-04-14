@@ -7,6 +7,7 @@ from flask_restful_swagger_3 import swagger
 
 class Hosts(Resource):
     @swagger.doc({
+        'security': [{'bearerAuth': []}],
         'tags': ['host'],
         'description': "Return list of hosts",
         'responses': {
@@ -81,6 +82,7 @@ class Hosts(Resource):
 
 class HostId(Resource):
     @swagger.doc({
+        'security': [{'bearerAuth': []}],
         'tags': ['host'],
         'description': "Return a host that match the given ID",
         'parameters': [
@@ -159,6 +161,7 @@ class HostId(Resource):
 
 class HostName(Resource):
     @swagger.doc({
+        'security': [{'bearerAuth': []}],
         'tags': ['host'],
         'description': "Return a host that match the given name",
         'parameters': [

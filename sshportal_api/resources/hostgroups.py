@@ -7,6 +7,7 @@ from flask_restful_swagger_3 import swagger
 
 class HostGroups(Resource):
     @swagger.doc({
+        'security': [{'bearerAuth': []}],
         'tags': ['hostgroup'],
         'description': "Return list of hostgroups",
         'responses': {
@@ -70,6 +71,7 @@ class HostGroups(Resource):
 
 class HostGroupId(Resource):
     @swagger.doc({
+        'security': [{'bearerAuth': []}],
         'tags': ['hostgroup'],
         'description': "Return a hostgroup that match the given ID",
         'parameters': [
@@ -137,6 +139,7 @@ class HostGroupId(Resource):
 
 class HostGroupName(Resource):
     @swagger.doc({
+        'security': [{'bearerAuth': []}],
         'tags': ['hostgroup'],
         'description': "Return a hostgroup that match the given name",
         'parameters': [

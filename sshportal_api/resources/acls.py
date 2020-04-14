@@ -69,6 +69,7 @@ class Acls(Resource):
 
 class Acl(Resource):
     @swagger.doc({
+        'security': [{'bearerAuth': []}],
         'tags': ['acl'],
         'description': "Return an acl that match the given ID",
         'parameters': [
