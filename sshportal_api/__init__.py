@@ -33,8 +33,8 @@ api = Api(app, version='0.1',
           description="An API over the moul/sshportal project, SSH bastion.",
           license={"name": "MIT",
                    "url": "https://en.wikipedia.org/wiki/MIT_License"},
-          components={"securitySchemes": {"bearerAuth": {"type": "https", "scheme": "bearer", "bearerFormat": "Bearer"}}}  # noqa
-          # security={"bearerAuth": []},
+          components={"securitySchemes": {"bearerAuth": {"type": "http", "scheme": "bearer", "bearerFormat": "Bearer"}}},  # noqa
+          security={"bearerAuth": []},
           )
 jwt = JWTManager(app)
 
