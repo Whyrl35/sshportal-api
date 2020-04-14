@@ -27,10 +27,12 @@ app.config['SWAGGER_PROD_URL'] = configuration['swagger']['prod']['url']
 api = Api(app, version='0.1',
           api_spec_url="/v1/spec",
           servers=[{"url": app.config['SWAGGER_PROD_URL'], "description": "Production server"}],
-          contact='ludovic.houdayer@gm@il.com',
+          contact={"name": "Developper",
+                   "url": "https://github.com/Whyrl35/sshportal-api",
+                   "email": "ludovic.houdayer@gmail.com"},
           description="An API over the moul/sshportal project, SSH bastion.",
           license="MIT",
-          components={"securitySchemes": {"bearerAuth": {"type": "https", "scheme": "bearer", "bearerFormat": "Bearer"}}}
+          components={"securitySchemes": {"bearerAuth": {"type": "https", "scheme": "bearer", "bearerFormat": "Bearer"}}}  # noqa
           # security={"bearerAuth": []},
           )
 jwt = JWTManager(app)
