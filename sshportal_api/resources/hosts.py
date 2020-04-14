@@ -2,7 +2,7 @@ from flask_restful import Resource
 from flask_jwt_extended import jwt_required
 from sshportal_api import api
 from sshportal_api.models import HostGroupsModel, HostHostGroupsModel, HostsModel, SshKeysModel
-from flask_restful_swagger_2 import swagger
+from flask_restful_swagger_3 import swagger
 
 
 class Hosts(Resource):

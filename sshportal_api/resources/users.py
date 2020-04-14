@@ -5,7 +5,7 @@ from flask_jwt_extended import (create_access_token, create_refresh_token, jwt_r
                                 get_jwt_identity, get_raw_jwt)
 from sshportal_api import api
 from sshportal_api.models import UserModel, RevokedTokenModel
-from flask_restful_swagger_2 import swagger
+from flask_restful_swagger_3 import swagger
 import datetime
 
 
