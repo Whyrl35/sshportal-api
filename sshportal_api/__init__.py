@@ -22,8 +22,10 @@ app.config['JWT_AUTH_URL_RULE'] = '/api/auth'
 app.config['JWT_BLACKLIST_ENABLED'] = True
 app.config['JWT_BLACKLIST_TOKEN_CHECKS'] = ['access', 'refresh']
 app.config['DATABASE'] = configuration['database']
+app.config['SWAGGER_PROD_URL'] = configuration['swagger']['prod']['url']
 
-api = Api(app, version='0.1', api_spec_url="/v1/spec", servers=[{"url": "https://bastion.whyrl.fr/api", "description": "Production server"}])
+api = Api(app, version='0.1', api_spec_url="/v1/spec", servers=[{"url": app.config['SWAGGER_PROD_URL'],
+                                                                 "description": "Production server"}])
 jwt = JWTManager(app)
 
 from sshportal_api.resources import *  # noqa

@@ -6,3 +6,8 @@ database:
   type: sqlite
   sqlite:
     uri: sqlite:///../sshportal.db
+
+## Swagger
+swagger:
+  prod:
+    url: http://api.domain/api
