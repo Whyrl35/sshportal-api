@@ -12,30 +12,34 @@ class HostGroups(Resource):
         'responses': {
             '200': {
                 'description': "A list of hostgroups",
-                'examples': {
-                    'application/json': [
-                        {
-                            "id": 1,
-                            "created_at": "2019-11-13T16:08:45.476325",
-                            "updated_at": "2019-11-13T16:08:45.485020",
-                            "deleted_at": None,
-                            "name": "default",
-                            "comment": "created by sshportal",
-                            "acls": [
+                'content': {
+                    'application/json': {
+                        'examples': {
+                            'application/json': [
                                 {
                                     "id": 1,
-                                    "created_at": "2019-11-13T16:08:45.484494",
-                                    "updated_at": "2019-11-13T16:08:45.484494",
+                                    "created_at": "2019-11-13T16:08:45.476325",
+                                    "updated_at": "2019-11-13T16:08:45.485020",
                                     "deleted_at": None,
-                                    "host_pattern": "",
-                                    "action": "allow",
-                                    "weight": 0,
-                                    "comment": "created by sshportal"
-                                }
-                            ],
-                            "hosts": []
-                        },
-                    ]
+                                    "name": "default",
+                                    "comment": "created by sshportal",
+                                    "acls": [
+                                        {
+                                            "id": 1,
+                                            "created_at": "2019-11-13T16:08:45.484494",
+                                            "updated_at": "2019-11-13T16:08:45.484494",
+                                            "deleted_at": None,
+                                            "host_pattern": "",
+                                            "action": "allow",
+                                            "weight": 0,
+                                            "comment": "created by sshportal"
+                                        }
+                                    ],
+                                    "hosts": []
+                                },
+                            ]
+                        }
+                    }
                 }
             }
         }
@@ -73,33 +77,39 @@ class HostGroupId(Resource):
                 'name': 'id',
                 'description': 'the id of a hostgroup',
                 'in': 'path',
-                'type': 'integer',
+                'schema': {
+                    'type': 'integer',
+                }
             }
         ],
         'responses': {
             '200': {
                 'description': "The hostgroup that match the ID",
-                'examples': {
+                'content': {
                     'application/json': {
-                        "id": 1,
-                        "created_at": "2019-11-13T16:08:45.476325",
-                        "updated_at": "2019-11-13T16:08:45.485020",
-                        "deleted_at": None,
-                        "name": "default",
-                        "comment": "created by sshportal",
-                        "acls": [
-                            {
+                        'examples': {
+                            'application/json': {
                                 "id": 1,
-                                "created_at": "2019-11-13T16:08:45.484494",
-                                "updated_at": "2019-11-13T16:08:45.484494",
+                                "created_at": "2019-11-13T16:08:45.476325",
+                                "updated_at": "2019-11-13T16:08:45.485020",
                                 "deleted_at": None,
-                                "host_pattern": "",
-                                "action": "allow",
-                                "weight": 0,
-                                "comment": "created by sshportal"
+                                "name": "default",
+                                "comment": "created by sshportal",
+                                "acls": [
+                                    {
+                                        "id": 1,
+                                        "created_at": "2019-11-13T16:08:45.484494",
+                                        "updated_at": "2019-11-13T16:08:45.484494",
+                                        "deleted_at": None,
+                                        "host_pattern": "",
+                                        "action": "allow",
+                                        "weight": 0,
+                                        "comment": "created by sshportal"
+                                    }
+                                ],
+                                "hosts": []
                             }
-                        ],
-                        "hosts": []
+                        }
                     }
                 }
             }
@@ -134,33 +144,39 @@ class HostGroupName(Resource):
                 'name': 'name',
                 'description': 'the name of a hostgroup',
                 'in': 'path',
-                'type': 'string',
+                'schema': {
+                    'type': 'string',
+                }
             }
         ],
         'responses': {
             '200': {
                 'description': "The hostgroup that match the name",
-                'examples': {
+                'content': {
                     'application/json': {
-                        "id": 1,
-                        "created_at": "2019-11-13T16:08:45.476325",
-                        "updated_at": "2019-11-13T16:08:45.485020",
-                        "deleted_at": None,
-                        "name": "default",
-                        "comment": "created by sshportal",
-                        "acls": [
-                            {
+                        'examples': {
+                            'application/json': {
                                 "id": 1,
-                                "created_at": "2019-11-13T16:08:45.484494",
-                                "updated_at": "2019-11-13T16:08:45.484494",
+                                "created_at": "2019-11-13T16:08:45.476325",
+                                "updated_at": "2019-11-13T16:08:45.485020",
                                 "deleted_at": None,
-                                "host_pattern": "",
-                                "action": "allow",
-                                "weight": 0,
-                                "comment": "created by sshportal"
+                                "name": "default",
+                                "comment": "created by sshportal",
+                                "acls": [
+                                    {
+                                        "id": 1,
+                                        "created_at": "2019-11-13T16:08:45.484494",
+                                        "updated_at": "2019-11-13T16:08:45.484494",
+                                        "deleted_at": None,
+                                        "host_pattern": "",
+                                        "action": "allow",
+                                        "weight": 0,
+                                        "comment": "created by sshportal"
+                                    }
+                                ],
+                                "hosts": []
                             }
-                        ],
-                        "hosts": []
+                        }
                     }
                 }
             }

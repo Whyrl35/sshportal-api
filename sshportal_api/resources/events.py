@@ -12,21 +12,24 @@ class Events(Resource):
         'responses': {
             '200': {
                 'description': "A list of events",
-                # 'schema': ,
-                'examples': {
-                    'application/json': [
-                        {
-                            "id": 1,
-                            "created_at": "2019-11-13T16:08:45.370956",
-                            "updated_at": "2019-11-13T16:08:45.370956",
-                            "deleted_at": None,
-                            "author_id": 0,
-                            "domain": "system",
-                            "action": "migrated",
-                            "entity": "",
-                            "args": None
+                'content': {
+                    'application/json': {
+                        'examples': {
+                            'application/json': [
+                                {
+                                    "id": 1,
+                                    "created_at": "2019-11-13T16:08:45.370956",
+                                    "updated_at": "2019-11-13T16:08:45.370956",
+                                    "deleted_at": None,
+                                    "author_id": 0,
+                                    "domain": "system",
+                                    "action": "migrated",
+                                    "entity": "",
+                                    "args": None
+                                }
+                            ]
                         }
-                    ]
+                    }
                 }
             }
         }
@@ -45,24 +48,29 @@ class Event(Resource):
                 'name': 'id',
                 'description': 'the id of an event',
                 'in': 'path',
-                'type': 'integer',
+                'schema': {
+                    'type': 'integer',
+                }
             }
         ],
         'responses': {
             '200': {
                 'description': "The event that match the ID",
-                # 'schema': ,
-                'examples': {
+                'content': {
                     'application/json': {
-                        "id": 1,
-                        "created_at": "2019-11-13T16:08:45.370956",
-                        "updated_at": "2019-11-13T16:08:45.370956",
-                        "deleted_at": None,
-                        "author_id": 0,
-                        "domain": "system",
-                        "action": "migrated",
-                        "entity": "",
-                        "args": None
+                        'examples': {
+                            'application/json': {
+                                "id": 1,
+                                "created_at": "2019-11-13T16:08:45.370956",
+                                "updated_at": "2019-11-13T16:08:45.370956",
+                                "deleted_at": None,
+                                "author_id": 0,
+                                "domain": "system",
+                                "action": "migrated",
+                                "entity": "",
+                                "args": None
+                            }
+                        }
                     }
                 }
             }

@@ -12,8 +12,12 @@ class Settings(Resource):
         'responses': {
             '200': {
                 'description': "A list of settings",
-                'examples': {
-                    'application/json': []
+                'content': {
+                    'application/json': {
+                        'examples': {
+                            'application/json': []
+                        }
+                    }
                 }
             }
         }
@@ -32,13 +36,19 @@ class Setting(Resource):
                 'name': 'id',
                 'description': 'the id of a setting',
                 'in': 'path',
-                'type': 'integer',
+                'schema': {
+                    'type': 'integer',
+                }
             }
         ],
         'responses': {
             '200': {
                 'description': "The setting that match the ID",
-                'examples': {}
+                'content': {
+                    'application/json': {
+                        'examples': {}
+                    }
+                }
             }
         }
     })

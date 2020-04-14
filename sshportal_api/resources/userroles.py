@@ -12,30 +12,34 @@ class UserRoles(Resource):
         'responses': {
             '200': {
                 'description': "A list of userroles",
-                'examples': {
-                    'application/json': [
-                        {
-                            "id": 1,
-                            "created_at": "2019-11-13T16:08:45.263598",
-                            "updated_at": "2019-11-13T16:31:34.940968",
-                            "deleted_at": None,
-                            "name": "admin",
-                            "users": [
+                'content': {
+                    'application/json': {
+                        'examples': {
+                            'application/json': [
                                 {
                                     "id": 1,
-                                    "name": "admin",
-                                    "password": None,
-                                    "created_at": "2019-11-13T16:08:45.490830",
-                                    "updated_at": "2019-11-13T16:39:21.114928",
+                                    "created_at": "2019-11-13T16:08:45.263598",
+                                    "updated_at": "2019-11-13T16:31:34.940968",
                                     "deleted_at": None,
-                                    "is_admin": None,
-                                    "email": "admin@localhost",
-                                    "comment": "created by sshportal",
-                                    "invite_token": "711pl82xwUJ4CCFw"
+                                    "name": "admin",
+                                    "users": [
+                                        {
+                                            "id": 1,
+                                            "name": "admin",
+                                            "password": None,
+                                            "created_at": "2019-11-13T16:08:45.490830",
+                                            "updated_at": "2019-11-13T16:39:21.114928",
+                                            "deleted_at": None,
+                                            "is_admin": None,
+                                            "email": "admin@localhost",
+                                            "comment": "created by sshportal",
+                                            "invite_token": "711pl82xwUJ4CCFw"
+                                        }
+                                    ]
                                 }
                             ]
                         }
-                    ]
+                    }
                 }
             }
         }
@@ -68,32 +72,36 @@ class UserRoleId(Resource):
                 'name': 'id',
                 'description': 'the id of a userrole',
                 'in': 'path',
-                'type': 'integer',
+                'schema': {'type': 'integer'}
             }
         ],
         'responses': {
             '200': {
                 'description': "The userrole that match the ID",
-                'examples': {
-                    "id": 1,
-                    "created_at": "2019-11-13T16:08:45.263598",
-                    "updated_at": "2019-11-13T16:31:34.940968",
-                    "deleted_at": None,
-                    "name": "admin",
-                    "users": [
-                        {
+                'content': {
+                    'application/json': {
+                        'examples': {
                             "id": 1,
-                            "name": "admin",
-                            "password": None,
-                            "created_at": "2019-11-13T16:08:45.490830",
-                            "updated_at": "2019-11-13T16:39:21.114928",
+                            "created_at": "2019-11-13T16:08:45.263598",
+                            "updated_at": "2019-11-13T16:31:34.940968",
                             "deleted_at": None,
-                            "is_admin": None,
-                            "email": "admin@localhost",
-                            "comment": "created by sshportal",
-                            "invite_token": "711pl82xwUJ4CCFw"
+                            "name": "admin",
+                            "users": [
+                                {
+                                    "id": 1,
+                                    "name": "admin",
+                                    "password": None,
+                                    "created_at": "2019-11-13T16:08:45.490830",
+                                    "updated_at": "2019-11-13T16:39:21.114928",
+                                    "deleted_at": None,
+                                    "is_admin": None,
+                                    "email": "admin@localhost",
+                                    "comment": "created by sshportal",
+                                    "invite_token": "711pl82xwUJ4CCFw"
+                                }
+                            ]
                         }
-                    ]
+                    }
                 }
             }
         }
@@ -122,32 +130,36 @@ class UserRoleName(Resource):
                 'name': 'name',
                 'description': 'the name of a userrole',
                 'in': 'path',
-                'type': 'integer',
+                'schema': {'type': 'integer'}
             }
         ],
         'responses': {
             '200': {
                 'description': "The userrole that match the name",
-                'examples': {
-                    "id": 1,
-                    "created_at": "2019-11-13T16:08:45.263598",
-                    "updated_at": "2019-11-13T16:31:34.940968",
-                    "deleted_at": None,
-                    "name": "admin",
-                    "users": [
-                        {
+                'content': {
+                    'application/json': {
+                        'examples': {
                             "id": 1,
-                            "name": "admin",
-                            "password": None,
-                            "created_at": "2019-11-13T16:08:45.490830",
-                            "updated_at": "2019-11-13T16:39:21.114928",
+                            "created_at": "2019-11-13T16:08:45.263598",
+                            "updated_at": "2019-11-13T16:31:34.940968",
                             "deleted_at": None,
-                            "is_admin": None,
-                            "email": "admin@localhost",
-                            "comment": "created by sshportal",
-                            "invite_token": "711pl82xwUJ4CCFw"
+                            "name": "admin",
+                            "users": [
+                                {
+                                    "id": 1,
+                                    "name": "admin",
+                                    "password": None,
+                                    "created_at": "2019-11-13T16:08:45.490830",
+                                    "updated_at": "2019-11-13T16:39:21.114928",
+                                    "deleted_at": None,
+                                    "is_admin": None,
+                                    "email": "admin@localhost",
+                                    "comment": "created by sshportal",
+                                    "invite_token": "711pl82xwUJ4CCFw"
+                                }
+                            ]
                         }
-                    ]
+                    }
                 }
             }
         }

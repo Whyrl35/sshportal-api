@@ -12,36 +12,39 @@ class Acls(Resource):
         'responses': {
             '200': {
                 'description': "A list of acls",
-                # 'schema': ,
-                'examples': {
-                    'application/json': [
-                        {
-                            "id": 1,
-                            "created_at": "2019-11-13T16:08:45.484494",
-                            "updated_at": "2019-11-13T16:08:45.484494",
-                            "deleted_at": None,
-                            "host_pattern": "",
-                            "action": "allow",
-                            "weight": 0,
-                            "comment": "created by sshportal",
-                            "host_groups": {
-                                "id": 1,
-                                "created_at": "2019-11-13T16:08:45.476325",
-                                "updated_at": "2019-11-13T16:08:45.485020",
-                                "deleted_at": None,
-                                "name": "default",
-                                "comment": "created by sshportal"
-                            },
-                            "user_groups": {
-                                "id": 1,
-                                "created_at": "2019-11-13T16:08:45.480323",
-                                "updated_at": "2019-11-13T16:08:45.491408",
-                                "deleted_at": None,
-                                "name": "default",
-                                "comment": "created by sshportal"
-                            }
+                'content': {
+                    'application/json': {
+                        'examples': {
+                            'application/json': [
+                                {
+                                    "id": 1,
+                                    "created_at": "2019-11-13T16:08:45.484494",
+                                    "updated_at": "2019-11-13T16:08:45.484494",
+                                    "deleted_at": None,
+                                    "host_pattern": "",
+                                    "action": "allow",
+                                    "weight": 0,
+                                    "comment": "created by sshportal",
+                                    "host_groups": {
+                                        "id": 1,
+                                        "created_at": "2019-11-13T16:08:45.476325",
+                                        "updated_at": "2019-11-13T16:08:45.485020",
+                                        "deleted_at": None,
+                                        "name": "default",
+                                        "comment": "created by sshportal"
+                                    },
+                                    "user_groups": {
+                                        "id": 1,
+                                        "created_at": "2019-11-13T16:08:45.480323",
+                                        "updated_at": "2019-11-13T16:08:45.491408",
+                                        "deleted_at": None,
+                                        "name": "default",
+                                        "comment": "created by sshportal"
+                                    }
+                                }
+                            ]
                         }
-                    ]
+                    }
                 }
             }
         }
@@ -72,38 +75,43 @@ class Acl(Resource):
                 'name': 'id',
                 'description': 'the id of an acl',
                 'in': 'path',
-                'type': 'integer',
+                'schema': {
+                    'type': 'integer',
+                }
             }
         ],
         'responses': {
             '200': {
                 'description': "The acl that match the ID",
-                # 'schema': ,
-                'examples': {
+                'content': {
                     'application/json': {
-                        "id": 1,
-                        "created_at": "2019-11-13T16:08:45.484494",
-                        "updated_at": "2019-11-13T16:08:45.484494",
-                        "deleted_at": None,
-                        "host_pattern": "",
-                        "action": "allow",
-                        "weight": 0,
-                        "comment": "created by sshportal",
-                        "host_groups": {
-                            "id": 1,
-                            "created_at": "2019-11-13T16:08:45.476325",
-                            "updated_at": "2019-11-13T16:08:45.485020",
-                            "deleted_at": None,
-                            "name": "default",
-                            "comment": "created by sshportal"
-                        },
-                        "user_groups": {
-                            "id": 1,
-                            "created_at": "2019-11-13T16:08:45.480323",
-                            "updated_at": "2019-11-13T16:08:45.491408",
-                            "deleted_at": None,
-                            "name": "default",
-                            "comment": "created by sshportal"
+                        'examples': {
+                            'application/json': {
+                                "id": 1,
+                                "created_at": "2019-11-13T16:08:45.484494",
+                                "updated_at": "2019-11-13T16:08:45.484494",
+                                "deleted_at": None,
+                                "host_pattern": "",
+                                "action": "allow",
+                                "weight": 0,
+                                "comment": "created by sshportal",
+                                "host_groups": {
+                                    "id": 1,
+                                    "created_at": "2019-11-13T16:08:45.476325",
+                                    "updated_at": "2019-11-13T16:08:45.485020",
+                                    "deleted_at": None,
+                                    "name": "default",
+                                    "comment": "created by sshportal"
+                                },
+                                "user_groups": {
+                                    "id": 1,
+                                    "created_at": "2019-11-13T16:08:45.480323",
+                                    "updated_at": "2019-11-13T16:08:45.491408",
+                                    "deleted_at": None,
+                                    "name": "default",
+                                    "comment": "created by sshportal"
+                                }
+                            }
                         }
                     }
                 }

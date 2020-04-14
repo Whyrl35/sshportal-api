@@ -12,49 +12,53 @@ class Sessions(Resource):
         'responses': {
             '200': {
                 'description': "A list of sessions",
-                'examples': {
-                    'application/json': [
-                        {
-                            "id": 1,
-                            "created_at": "2019-11-13T16:42:16.969253",
-                            "updated_at": "2019-11-13T16:42:17.397949",
-                            "deleted_at": None,
-                            "stopped_at": None,
-                            "status": "closed",
-                            "user_id": 1,
-                            "host_id": 1,
-                            "err_msg": "ssh: handshake failed: ssh: unable to authenticate, attempted methods [none publickey], no supported methods remain",   # noqa
-                            "comment": "",
-                            "host": {
-                                "id": 1,
-                                "created_at": "2019-11-13T16:35:48.602836",
-                                "updated_at": "2019-11-13T16:42:17.189908",
-                                "deleted_at": None,
-                                "name": "test",
-                                "addr": "",
-                                "user": "",
-                                "password": "",
-                                "ssh_key_id": 1,
-                                "fingerprint": None,
-                                "comment": "",
-                                "host_key": "AAAAB3......+N",
-                                "url": "ssh://admin@test.local",
-                                "hop_ip": 0
-                            },
-                            "user": {
-                                "id": 1,
-                                "name": "admin",
-                                "password": None,
-                                "created_at": "2019-11-13T16:08:45.490830",
-                                "updated_at": "2019-11-13T16:39:21.114928",
-                                "deleted_at": None,
-                                "is_admin": None,
-                                "email": "admin@localhost",
-                                "comment": "created by sshportal",
-                                "invite_token": "1234567899"
-                            }
+                'content': {
+                    'application/json': {
+                        'examples': {
+                            'application/json': [
+                                {
+                                    "id": 1,
+                                    "created_at": "2019-11-13T16:42:16.969253",
+                                    "updated_at": "2019-11-13T16:42:17.397949",
+                                    "deleted_at": None,
+                                    "stopped_at": None,
+                                    "status": "closed",
+                                    "user_id": 1,
+                                    "host_id": 1,
+                                    "err_msg": "ssh: handshake failed: ssh: unable to authenticate, attempted methods [none publickey], no supported methods remain",   # noqa
+                                    "comment": "",
+                                    "host": {
+                                        "id": 1,
+                                        "created_at": "2019-11-13T16:35:48.602836",
+                                        "updated_at": "2019-11-13T16:42:17.189908",
+                                        "deleted_at": None,
+                                        "name": "test",
+                                        "addr": "",
+                                        "user": "",
+                                        "password": "",
+                                        "ssh_key_id": 1,
+                                        "fingerprint": None,
+                                        "comment": "",
+                                        "host_key": "AAAAB3......+N",
+                                        "url": "ssh://admin@test.local",
+                                        "hop_ip": 0
+                                    },
+                                    "user": {
+                                        "id": 1,
+                                        "name": "admin",
+                                        "password": None,
+                                        "created_at": "2019-11-13T16:08:45.490830",
+                                        "updated_at": "2019-11-13T16:39:21.114928",
+                                        "deleted_at": None,
+                                        "is_admin": None,
+                                        "email": "admin@localhost",
+                                        "comment": "created by sshportal",
+                                        "invite_token": "1234567899"
+                                    }
+                                }
+                            ]
                         }
-                    ]
+                    }
                 }
             }
         }
@@ -87,52 +91,57 @@ class Session(Resource):
                 'name': 'id',
                 'description': 'the id of a session',
                 'in': 'path',
-                'type': 'integer',
+                'schema': {
+                    'type': 'integer',
+                }
             }
         ],
         'responses': {
             '200': {
                 'description': "The session that match the ID",
-                # 'schema': ,
-                'examples': {
+                'content': {
                     'application/json': {
-                        "id": 1,
-                        "created_at": "2019-11-13T16:42:16.969253",
-                        "updated_at": "2019-11-13T16:42:17.397949",
-                        "deleted_at": None,
-                        "stopped_at": None,
-                        "status": "closed",
-                        "user_id": 1,
-                        "host_id": 1,
-                        "err_msg": "ssh: handshake failed: ssh: unable to authenticate, attempted methods [none publickey], no supported methods remain",   # noqa
-                        "comment": "",
-                        "host": {
-                            "id": 1,
-                            "created_at": "2019-11-13T16:35:48.602836",
-                            "updated_at": "2019-11-13T16:42:17.189908",
-                            "deleted_at": None,
-                            "name": "test",
-                            "addr": "",
-                            "user": "",
-                            "password": "",
-                            "ssh_key_id": 1,
-                            "fingerprint": None,
-                            "comment": "",
-                            "host_key": "AAAAB3......+N",
-                            "url": "ssh://admin@test.local",
-                            "hop_ip": 0
-                        },
-                        "user": {
-                            "id": 1,
-                            "name": "admin",
-                            "password": None,
-                            "created_at": "2019-11-13T16:08:45.490830",
-                            "updated_at": "2019-11-13T16:39:21.114928",
-                            "deleted_at": None,
-                            "is_admin": None,
-                            "email": "admin@localhost",
-                            "comment": "created by sshportal",
-                            "invite_token": "1234567899"
+                        'examples': {
+                            'application/json': {
+                                "id": 1,
+                                "created_at": "2019-11-13T16:42:16.969253",
+                                "updated_at": "2019-11-13T16:42:17.397949",
+                                "deleted_at": None,
+                                "stopped_at": None,
+                                "status": "closed",
+                                "user_id": 1,
+                                "host_id": 1,
+                                "err_msg": "ssh: handshake failed: ssh: unable to authenticate, attempted methods [none publickey], no supported methods remain",   # noqa
+                                "comment": "",
+                                "host": {
+                                    "id": 1,
+                                    "created_at": "2019-11-13T16:35:48.602836",
+                                    "updated_at": "2019-11-13T16:42:17.189908",
+                                    "deleted_at": None,
+                                    "name": "test",
+                                    "addr": "",
+                                    "user": "",
+                                    "password": "",
+                                    "ssh_key_id": 1,
+                                    "fingerprint": None,
+                                    "comment": "",
+                                    "host_key": "AAAAB3......+N",
+                                    "url": "ssh://admin@test.local",
+                                    "hop_ip": 0
+                                },
+                                "user": {
+                                    "id": 1,
+                                    "name": "admin",
+                                    "password": None,
+                                    "created_at": "2019-11-13T16:08:45.490830",
+                                    "updated_at": "2019-11-13T16:39:21.114928",
+                                    "deleted_at": None,
+                                    "is_admin": None,
+                                    "email": "admin@localhost",
+                                    "comment": "created by sshportal",
+                                    "invite_token": "1234567899"
+                                }
+                            }
                         }
                     }
                 }

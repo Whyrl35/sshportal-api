@@ -21,20 +21,32 @@ class Registration(Resource):
         'responses': {
             '200': {
                 'description': "Register a new user",
-                'examples': {
-                    'application/json': {}
+                'content': {
+                    'application/json': {
+                        'examples': {
+                            'application/json': {}
+                        }
+                    }
                 }
             },
             '401': {
                 'description': "Your are not authorized to register the user",
-                'examples': {
-                    'application/json': {}
+                'content': {
+                    'application/json': {
+                        'examples': {
+                            'application/json': {}
+                        }
+                    }
                 }
             },
             '500': {
                 'description': "Failed to register the user",
-                'examples': {
-                    'application/json': {}
+                'content': {
+                    'application/json': {
+                        'examples': {
+                            'application/json': {}
+                        }
+                    }
                 }
             }
         }
@@ -74,20 +86,28 @@ class Login(Resource):
         'responses': {
             '200': {
                 'description': "Login a user",
-                'examples': {
+                'content': {
                     'application/json': {
-                        "message": "Logged in as ludovic",
-                        "user": "ludovic",
-                        "access_token": "eyJ0....6g",
-                        "refresh_token": "eyJ0....74"
+                        'examples': {
+                            'application/json': {
+                                "message": "Logged in as ludovic",
+                                "user": "ludovic",
+                                "access_token": "eyJ0....6g",
+                                "refresh_token": "eyJ0....74"
+                            }
+                        }
                     }
                 }
             },
             '401': {
                 'description': "Your are not authorized to register the user",
-                'examples': {
+                'content': {
                     'application/json': {
-                        "message": "Wrong credentials"
+                        'examples': {
+                            'application/json': {
+                                "message": "Wrong credentials"
+                            }
+                        }
                     }
                 }
             }

@@ -1,7 +1,7 @@
 from flask import Flask
 from flask_jwt_extended import JWTManager
 from flask_cors import CORS
-from flask_restful_swagger_2 import Api
+from flask_restful_swagger_3 import Api
 import yaml
 import os
 
@@ -23,7 +23,7 @@ app.config['JWT_BLACKLIST_ENABLED'] = True
 app.config['JWT_BLACKLIST_TOKEN_CHECKS'] = ['access', 'refresh']
 app.config['DATABASE'] = configuration['database']
 
-api = Api(app, api_version='0.1', api_spec_url="/v1/spec")
+api = Api(app, version='0.1', api_spec_url="/v1/spec", servers=[{"url": "https://bastion.whyrl.fr/api", "description": "Production server"}])
 jwt = JWTManager(app)
 
 from sshportal_api.resources import *  # noqa
