@@ -5,10 +5,10 @@ class SessionsModel(db.Model):
     __tablename__ = 'sessions'
 
     id = db.Column(db.Integer, primary_key=True)
-    created_at = db.Column(db.DateTime())
-    updated_at = db.Column(db.DateTime())
-    deleted_at = db.Column(db.DateTime(), index=True)
-    stopped_at = db.Column(db.DateTime(), index=True)
+    created_at = db.Column(db.DateTime(timezone=True))
+    updated_at = db.Column(db.DateTime(timezone=True))
+    deleted_at = db.Column(db.DateTime(timezone=True), index=True)
+    stopped_at = db.Column(db.DateTime(timezone=True), index=True)
     status = db.Column(db.String(255))
     user_id = db.Column(db.Integer)
     host_id = db.Column(db.Integer)

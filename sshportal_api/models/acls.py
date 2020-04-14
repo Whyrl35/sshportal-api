@@ -6,9 +6,9 @@ class AclsModel(db.Model):
     __tablename__ = 'acls'
 
     id = db.Column(db.Integer, primary_key=True)
-    created_at = db.Column(db.DateTime())
-    updated_at = db.Column(db.DateTime())
-    deleted_at = db.Column(db.DateTime(), index=True)
+    created_at = db.Column(db.DateTime(timezone=True))
+    updated_at = db.Column(db.DateTime(timezone=True))
+    deleted_at = db.Column(db.DateTime(timezone=True), index=True)
     host_pattern = db.Column(db.String(255))
     action = db.Column(db.String(255))
     weight = db.Column(db.String(255))

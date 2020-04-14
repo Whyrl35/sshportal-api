@@ -6,9 +6,9 @@ class UserKeysModel(db.Model):
     __tablename__ = 'user_keys'
 
     id = db.Column(db.Integer, primary_key=True)
-    created_at = db.Column(db.DateTime())
-    updated_at = db.Column(db.DateTime())
-    deleted_at = db.Column(db.DateTime(), index=True)
+    created_at = db.Column(db.DateTime(timezone=True))
+    updated_at = db.Column(db.DateTime(timezone=True))
+    deleted_at = db.Column(db.DateTime(timezone=True), index=True)
     key = db.Column(db.LargeBinary(255))
     user_id = db.Column(db.Integer)
     comment = db.Column(db.String(255))

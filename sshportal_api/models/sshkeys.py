@@ -5,9 +5,9 @@ class SshKeysModel(db.Model):
     __tablename__ = 'ssh_keys'
 
     id = db.Column(db.Integer, primary_key=True)
-    created_at = db.Column(db.DateTime())
-    updated_at = db.Column(db.DateTime())
-    deleted_at = db.Column(db.DateTime(), index=True)
+    created_at = db.Column(db.DateTime(timezone=True))
+    updated_at = db.Column(db.DateTime(timezone=True))
+    deleted_at = db.Column(db.DateTime(timezone=True), index=True)
     name = db.Column(db.String(255), unique=True)
     type = db.Column(db.String(255))
     length = db.Column(db.Integer)
