@@ -53,7 +53,7 @@ class Statistics(Resource):
 
         return {
             'users': {
-                'count': len(users)
+                'count': len(users['users'])
             },
             'keys': {
                 'count': len(keys)
