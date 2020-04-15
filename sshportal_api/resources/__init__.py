@@ -9,3 +9,4 @@ from .sshkeys import *  # noqa
 from .usergroups import *  # noqa
 from .userkeys import *  # noqa
 from .userroles import *  # noqa
+from .statistics import *  # noqa
