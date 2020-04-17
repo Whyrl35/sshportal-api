@@ -4,6 +4,8 @@
 # db read from external
 FROM python:3.7-slim-buster
 
+RUN apt update && apt install -y curl
+
 RUN pip install --upgrade pip && \
     pip install virtualenv
 
@@ -26,3 +28,5 @@ EXPOSE 8000
 
 ENTRYPOINT [ "gunicorn" ]
 CMD [ "--bind", "0.0.0.0:8000", "run:app" ]
+
+HEALTHCHECK --interval=10s --timeout=3s CMD curl -f http://localhost:8000/v1/ping || exit 1

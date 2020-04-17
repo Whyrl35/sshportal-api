@@ -10,3 +10,4 @@ from .usergroups import *  # noqa
 from .userkeys import *  # noqa
 from .userroles import *  # noqa
 from .statistics import *  # noqa
+from .ping import *  # noqa

@@ -22,7 +22,11 @@ app.config['JWT_AUTH_URL_RULE'] = '/api/auth'
 app.config['JWT_BLACKLIST_ENABLED'] = True
 app.config['JWT_BLACKLIST_TOKEN_CHECKS'] = ['access', 'refresh']
 app.config['DATABASE'] = configuration['database']
-app.config['SWAGGER_PROD_URL'] = configuration['swagger']['prod']['url']
+
+if 'swagger' in configuration:
+    app.config['SWAGGER_PROD_URL'] = configuration['swagger']['prod']['url']
+else:
+    app.config['SWAGGER_PROD_URL'] = 'http://localhost'
 
 api = Api(app, version='0.1',
           api_spec_url="/v1/spec",
