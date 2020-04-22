@@ -132,7 +132,8 @@ class HostGroupId(Resource):
         host_groups_part['hosts'] = []
         for hhg in host_host_groups:
             host = HostsModel.by_id(hhg.host_id)
-            host_groups_part['hosts'].append(HostsModel.to_json(host) if host else None)
+            if host:
+                host_groups_part['hosts'].append(HostsModel.to_json(host))
 
         return host_groups_part
 
