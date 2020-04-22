@@ -9,3 +9,5 @@ For that I tried to build an API over this bastion, using it's database via the 
 Once the API is build, a new web interface will be built using VueJS.
 
 To see how to install the API see: [installation](INSTALL.md)
+
+/!\ FOR NOW THIS PROJECT IS IN HEAVY DEVELOPMENT AND NOT READY TO BE USED.
