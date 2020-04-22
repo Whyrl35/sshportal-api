@@ -10,4 +10,6 @@ Once the API is build, a new web interface will be built using VueJS.
 
 To see how to install the API see: [installation](INSTALL.md)
 
-/!\ FOR NOW THIS PROJECT IS IN HEAVY DEVELOPMENT AND NOT READY TO BE USED.
+:warning: Don't use this for now. 
+
+:construction: FOR NOW THIS PROJECT IS IN HEAVY DEVELOPMENT AND NOT READY TO BE USED.
