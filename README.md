@@ -1,4 +1,5 @@
 ![build-deploy](https://github.com/Whyrl35/sshportal-api/workflows/build-deploy/badge.svg?branch=master)
+[![Donate](https://img.shields.io/badge/buymeacoffee-donate-yellow.svg)](https://buymeacoffee.com/whyrl)
 
 sshportal is a great SSH *Bastion*.
 
