@@ -140,6 +140,8 @@ class Login(Resource):
             return {
                 'message': 'Logged in as {}'.format(current_user.name),
                 'user': current_user.name,
+                'id': current_user.id,
+                'email': current_user.email,
                 'access_token': access_token,
                 'refresh_token': refresh_token
                 }, 200, {'jwt-token': access_token}
