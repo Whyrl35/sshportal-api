@@ -106,6 +106,8 @@ class Login(Resource):
                             'application/json': {
                                 "message": "Logged in as ludovic",
                                 "user": "ludovic",
+                                "id": "2",
+                                "email": "name@domain.com",
                                 "access_token": "eyJ0....6g",
                                 "refresh_token": "eyJ0....74"
                             }
