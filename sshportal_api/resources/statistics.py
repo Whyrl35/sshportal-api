@@ -30,7 +30,9 @@ class Statistics(Resource):
                                     "count": 3
                                 },
                                 "sessions": {
-                                    "count": 415
+                                    "count": 415,
+                                    "active": 1,
+                                    "errors": 10,
                                 },
                                 "events": {
                                     "count": 803
@@ -65,10 +67,13 @@ class Statistics(Resource):
                 'count': len(acls)
             },
             'sessions': {
-                'count': len(sessions)
+                'count': len(sessions),
+                'active': len([s for s in sessions if s.status != 'closed']),
+                'errors': len([s for s in sessions if s.err_msg != ''])
             },
             'events': {
-                'count': len(events)
+                'count': len(events),
+                'last_5': list(reversed([EventsModel.to_json(x) for x in events[-5:]]))
             }
         }
 
