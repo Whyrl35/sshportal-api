@@ -64,7 +64,8 @@ class Statistics(Resource):
                 'count': len(hosts)
             },
             'acls': {
-                'count': len(acls)
+                'count': len(acls),
+                'allow': len([x for x in acls if x.action == 'allow']),
             },
             'sessions': {
                 'count': len(sessions),
