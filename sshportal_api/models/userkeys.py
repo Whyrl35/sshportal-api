@@ -38,8 +38,12 @@ class UserKeysModel(db.Model):
         }
 
     @classmethod
-    def by_id(cls, user_group_id):
-        return cls.query.filter_by(id=user_group_id).first()
+    def by_id(cls, id):
+        return cls.query.filter_by(id=id).first()
+
+    @classmethod
+    def by_user_id(cls, user_id):
+        return cls.query.filter_by(user_id=user_id)
 
     @classmethod
     def return_all(cls):

@@ -4,7 +4,7 @@ from flask_restful import Resource, reqparse
 from flask_jwt_extended import (create_access_token, create_refresh_token, jwt_required, jwt_refresh_token_required,
                                 get_jwt_identity, get_raw_jwt)
 from sshportal_api import api
-from sshportal_api.models import UserModel, RevokedTokenModel
+from sshportal_api.models import UserModel, RevokedTokenModel, UserUserRolesModel, UserRolesModel, UserKeysModel, UserUserGroupsModel, UserGroupsModel
 from flask_restful_swagger_3 import swagger
 import datetime
 
@@ -217,7 +217,26 @@ class User(Resource):
         if not current_user:
             return {'message': 'User {} doesn\'t exist'.format(data['name'])}, 400
 
-        return UserModel.to_json(current_user)
+        user_part = UserModel.to_json(current_user)
+        user_part['roles'] = list()
+        user_part['keys'] = list()
+        user_part['groups'] = list()
+
+        useruserroles = UserUserRolesModel.by_user_id(current_user.id)
+        for uur in useruserroles:
+            role = UserRolesModel.by_id(uur.user_role_id)
+            user_part['roles'].append(UserRolesModel.to_json(role))
+
+        userkeys = UserKeysModel.by_user_id(current_user.id)
+        for uk in userkeys:
+            user_part['keys'].append(UserKeysModel.to_json(uk))
+
+        usergroups = UserUserGroupsModel.by_user_id(current_user.id)
+        for ug in usergroups:
+            group = UserGroupsModel.by_id(ug.user_group_id)
+            user_part['groups'].append(UserGroupsModel.to_json(group))
+
+        return user_part
 
 
 #
