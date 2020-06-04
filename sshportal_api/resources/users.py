@@ -234,7 +234,8 @@ class User(Resource):
         usergroups = UserUserGroupsModel.by_user_id(current_user.id)
         for ug in usergroups:
             group = UserGroupsModel.by_id(ug.user_group_id)
-            user_part['groups'].append(UserGroupsModel.to_json(group))
+            if group:
+                user_part['groups'].append(UserGroupsModel.to_json(group))
 
         return user_part
 
